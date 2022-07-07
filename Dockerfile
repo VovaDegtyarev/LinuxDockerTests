@@ -21,7 +21,6 @@ RUN dotnet publish ./src/WebAppJ.Api/WebAppJ.Api.csproj -c Release -o dist --no-
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 as runtime
 WORKDIR /app
-RUN ls -lash
 COPY --from=Build /app/dist .
 EXPOSE 80
 ENTRYPOINT ["dotnet", "WebAppJ.Api.dll"]
